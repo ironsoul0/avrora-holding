@@ -18,11 +18,10 @@ const deepCopy = (division) => {
 };
 
 const prepareData = (divisions) => {
-  const a = {
+  return {
     name: "root",
     children: divisions.map((division) => deepCopy(division)),
   };
-  return a;
 };
 
 const generateNested = (

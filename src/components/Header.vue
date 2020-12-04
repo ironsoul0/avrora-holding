@@ -10,4 +10,10 @@
   margin: 0;
   padding: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .header {
+    font-size: 15px;
+  }
+}
 </style>

@@ -96,4 +96,14 @@ export default {
 .add-form__input:nth-last-of-type(1) {
   margin-left: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .add-form__input {
+    display: block;
+  }
+
+  .add-form__input:nth-last-of-type(1) {
+    margin-left: 0;
+  }
+}
 </style>

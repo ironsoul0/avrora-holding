@@ -98,9 +98,13 @@ export default {
   margin-right: 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   .structure__row p:nth-child(1) {
     padding-left: 20px !important;
+  }
+
+  .structure__expander {
+    display: none;
   }
 }
 </style>

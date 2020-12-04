@@ -1,9 +1,9 @@
 <template>
   <div class="structure">
     <div class="structure__row structure__main-row">
-      <p></p>
-      <p>Общее количество</p>
-      <p>Фактическое количество</p>
+      <p>Название</p>
+      <p>Общее кол-во</p>
+      <p>Фактическое кол-во</p>
       <p>Действия</p>
     </div>
     <TreeNode
@@ -75,5 +75,25 @@ export default {
 
 .structure__row p:nth-child(4) {
   flex-basis: 10%;
+}
+
+@media screen and (max-width: 768px) {
+  .structure__row p:nth-child(1) {
+    flex-basis: 50%;
+    box-sizing: border-box;
+  }
+
+  .structure__row p:nth-child(2) {
+    flex-basis: 15%;
+  }
+
+  .structure__row p:nth-child(3) {
+    flex-basis: 0%;
+    display: none;
+  }
+
+  .structure__row p:nth-child(4) {
+    flex-basis: 25%;
+  }
 }
 </style>

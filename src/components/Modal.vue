@@ -1,14 +1,14 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
-          <div class="modal-header">
+    <div class="modal">
+      <div class="modal__wrapper">
+        <div class="modal__container">
+          <div class="modal__header">
             <h3 name="header">Редактирование</h3>
           </div>
 
           <form @submit.prevent="submit">
-            <div class="modal-body">
+            <div class="modal__body">
               <input v-model="name" placeholder="Новое имя" />
               <input
                 type="number"
@@ -16,17 +16,17 @@
                 placeholder="Новое фактическое кол-во"
               />
             </div>
-            <div class="modal-footer">
+            <div class="modal__footer">
               <slot name="footer">
                 <button
                   :disabled="!name || !fact || fact <= 0"
-                  class="modal-body__button"
+                  class="modal__button"
                   type="submit"
                 >
                   Изменить
                 </button>
                 <button
-                  class="modal-body__button modal-default-button"
+                  class="modal__button modal__default-button"
                   v-on:click="toggleOpen()"
                   type="button"
                 >
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped>
-.modal-mask {
+.modal {
   position: fixed;
   z-index: 9998;
   top: 0;
@@ -81,12 +81,12 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-.modal-wrapper {
+.modal__wrapper {
   display: table-cell;
   vertical-align: middle;
 }
 
-.modal-container {
+.modal__container {
   width: 300px;
   margin: 0px auto;
   padding: 20px 30px;
@@ -97,12 +97,12 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.modal-header h3 {
+.modal__header h3 {
   margin-top: 0;
   color: #42b983;
 }
 
-.modal-default-button {
+.modal__default-button {
   float: right;
 }
 
@@ -114,7 +114,7 @@ export default {
   opacity: 0;
 }
 
-.modal-body input {
+.modal__body input {
   width: 200px;
   margin-bottom: 15px;
   padding: 5px 10px;
@@ -122,7 +122,7 @@ export default {
   font-size: 14px;
 }
 
-.modal-body__button {
+.modal__button {
   border: none;
   padding: 7px 12px;
   opacity: 0.8;
@@ -131,7 +131,7 @@ export default {
   font-size: 14px;
 }
 
-.modal-body__button:hover {
+.modal__button:hover {
   border: none;
   opacity: 1;
   cursor: pointer;
