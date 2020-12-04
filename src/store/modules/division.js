@@ -5,7 +5,7 @@ const deepCopy = (division) => {
   const current = {
     name,
     count,
-    expanded: true,
+    expanded: false,
   };
   current.children = children.map((child) => deepCopy(child));
   return current;
@@ -17,6 +17,18 @@ const prepareData = (divisions) => {
     children: divisions.map((division) => deepCopy(division)),
   };
   return a;
+};
+
+const findTargetByPath = (oldDivisions, path) => {
+  const divisions = { ...oldDivisions };
+  const last = path.pop();
+
+  let target = divisions;
+  path.forEach((currentIndex) => {
+    target = target.children[currentIndex];
+  });
+
+  return { target, divisions, last };
 };
 
 export default {
@@ -41,15 +53,19 @@ export default {
       state.posts.unshift(newPost);
     },
     deleteDivision(state, path) {
-      const divisions = { ...state.divisions };
-      const last = path.pop();
-
-      let target = divisions;
-      path.forEach((currentIndex) => {
-        target = target.children[currentIndex];
-      });
-
+      const { target, divisions, last } = findTargetByPath(
+        state.divisions,
+        path
+      );
       target.children.splice(last, 1);
+      state.divisions = divisions;
+    },
+    toggleExpandDivision(state, path) {
+      const { target, divisions, last } = findTargetByPath(
+        state.divisions,
+        path
+      );
+      target.children[last].expanded = !target.children[last].expanded;
       state.divisions = divisions;
     },
   },

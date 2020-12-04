@@ -12,10 +12,11 @@
         }"
       >
         <i
+          v-on:click="toggleExpandDivision(path)"
           v-if="division.children && division.children.length > 0"
           class="fa fa-angle-right structure__icon structure__expander"
           v-bind:style="{
-            transform: 'rotate(90deg)',
+            transform: division.expanded ? 'rotate(90deg)' : '',
           }"
         ></i>
         {{ division.name }}
@@ -49,7 +50,7 @@
 import { mapMutations } from "vuex";
 
 export default {
-  methods: mapMutations(["deleteDivision"]),
+  methods: mapMutations(["deleteDivision", "toggleExpandDivision"]),
   props: {
     division: {
       type: Object,
