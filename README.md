@@ -1,5 +1,5 @@
 <h1 align="center">
-  Avrora Holding test task
+  Avrora Holding Test
 </h1>
 <p align="center">
    Built with <a href="https://www.vuejs.org/" target="_blank">Vue</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
