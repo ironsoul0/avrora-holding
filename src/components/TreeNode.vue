@@ -24,7 +24,10 @@
       <p>{{ division.count }}</p>
       <p>{{ division.fact }}</p>
       <p>
-        <i class="fa fa-pencil structure__icon"></i>
+        <i
+          v-on:click="changeEditPath(path)"
+          class="fa fa-pencil structure__icon"
+        ></i>
         <i
           v-on:click="deleteDivision(path)"
           class="fa fa-trash structure__icon"
@@ -52,7 +55,11 @@
 import { mapMutations } from "vuex";
 
 export default {
-  methods: mapMutations(["deleteDivision", "toggleExpandDivision"]),
+  methods: mapMutations([
+    "deleteDivision",
+    "toggleExpandDivision",
+    "changeEditPath",
+  ]),
   props: {
     division: {
       type: Object,

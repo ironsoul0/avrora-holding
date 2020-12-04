@@ -3,17 +3,22 @@
     <Header />
     <AddDivision />
     <Table />
+    <Modal v-if="isOpen" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 import Header from "./components/Header";
 import AddDivision from "./components/AddDivision";
 import Table from "./components/Table";
+import Modal from "./components/Modal";
 
 export default {
   name: "App",
-  components: { Header, AddDivision, Table },
+  computed: mapGetters(["isOpen"]),
+  components: { Header, AddDivision, Table, Modal },
 };
 </script>
 

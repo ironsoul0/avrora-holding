@@ -82,6 +82,7 @@ export default {
   border: none;
   padding: 10px 12px;
   opacity: 1;
+  cursor: pointer;
 }
 
 .add-form__input {

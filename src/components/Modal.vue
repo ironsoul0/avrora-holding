@@ -4,26 +4,68 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            <slot name="header"> default header </slot>
+            <h3 name="header">Редактирование</h3>
           </div>
 
-          <div class="modal-body">
-            <slot name="body"> default body </slot>
-          </div>
-
-          <div class="modal-footer">
-            <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
-              </button>
-            </slot>
-          </div>
+          <form @submit.prevent="submit">
+            <div class="modal-body">
+              <input v-model="name" placeholder="Новое имя" />
+              <input
+                type="number"
+                v-model="fact"
+                placeholder="Новое фактическое кол-во"
+              />
+            </div>
+            <div class="modal-footer">
+              <slot name="footer">
+                <button
+                  :disabled="!name || !fact || fact <= 0"
+                  class="modal-body__button"
+                  type="submit"
+                >
+                  Изменить
+                </button>
+                <button
+                  class="modal-body__button modal-default-button"
+                  v-on:click="toggleOpen()"
+                >
+                  Закрыть
+                </button>
+              </slot>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </transition>
 </template>
+
+<script>
+import { mapMutations, mapGetters } from "vuex";
+
+export default {
+  methods: {
+    ...mapMutations(["toggleOpen", "editDivision"]),
+    submit() {
+      this.editDivision({
+        name: this.name,
+        fact: parseInt(this.fact),
+        path: this.editPath,
+      });
+      this.toggleOpen();
+    },
+  },
+  computed: {
+    ...mapGetters(["editPath"]),
+  },
+  data() {
+    return {
+      name: "",
+      fact: "",
+    };
+  },
+};
+</script>
 
 <style scoped>
 .modal-mask {
@@ -59,22 +101,9 @@
   color: #42b983;
 }
 
-.modal-body {
-  margin: 20px 0;
-}
-
 .modal-default-button {
   float: right;
 }
-
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
 
 .modal-enter {
   opacity: 0;
@@ -82,5 +111,28 @@
 
 .modal-leave-active {
   opacity: 0;
+}
+
+.modal-body input {
+  width: 200px;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+.modal-body__button {
+  border: none;
+  padding: 7px 12px;
+  opacity: 0.8;
+  transition: opacity 0.1s ease-in;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.modal-body__button:hover {
+  border: none;
+  opacity: 1;
+  cursor: pointer;
 }
 </style>

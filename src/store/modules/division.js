@@ -119,6 +119,28 @@ export default {
       });
       state.divisions = divisions;
     },
+    editDivision(state, newData) {
+      const { name, fact, path } = newData;
+      const divisions = { ...state.divisions };
+
+      let target = divisions;
+      path.forEach((currentIndex) => {
+        target = target.children[currentIndex];
+      });
+
+      const diff = fact - target.fact;
+
+      target = divisions;
+      path.forEach((currentIndex) => {
+        target = target.children[currentIndex];
+        target.count += diff;
+      });
+
+      target.name = name;
+      target.fact = fact;
+
+      state.divisions = divisions;
+    },
   },
   state: {
     divisions: prepareData(divisions),
