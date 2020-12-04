@@ -2,9 +2,15 @@ import divisions from "../../services/divisions.json";
 
 const deepCopy = (division) => {
   const { name, count, children } = division;
+
+  const childrenSum = children.reduce((acc, child) => {
+    return acc + child.count;
+  }, 0);
+
   const current = {
     name,
     count,
+    fact: count - childrenSum,
     expanded: false,
   };
   current.children = children.map((child) => deepCopy(child));
@@ -17,6 +23,26 @@ const prepareData = (divisions) => {
     children: divisions.map((division) => deepCopy(division)),
   };
   return a;
+};
+
+const generateNested = (
+  divisions,
+  combinations,
+  currentText = [],
+  currentPath = []
+) => {
+  if (currentPath.length > 0) {
+    combinations.push({ text: currentText.join(" > "), path: currentPath });
+  }
+
+  divisions.children.forEach((child, index) => {
+    generateNested(
+      child,
+      combinations,
+      [...currentText, child.name],
+      [...currentPath, index]
+    );
+  });
 };
 
 const findTargetByPath = (oldDivisions, path) => {
@@ -57,6 +83,14 @@ export default {
         state.divisions,
         path
       );
+      const deleteCount = target.children[last].count;
+      let current = divisions;
+
+      path.forEach((currentIndex) => {
+        current.children[currentIndex].count -= deleteCount;
+        current = current.children[currentIndex];
+      });
+
       target.children.splice(last, 1);
       state.divisions = divisions;
     },
@@ -68,6 +102,23 @@ export default {
       target.children[last].expanded = !target.children[last].expanded;
       state.divisions = divisions;
     },
+    addDivision(state, division) {
+      const { name, fact, selected } = division;
+      const divisions = { ...state.divisions };
+
+      let target = divisions;
+      selected.forEach((currentIndex) => {
+        target = target.children[currentIndex];
+        target.count += fact;
+      });
+      target.children.push({
+        name,
+        count: fact,
+        fact,
+        children: [],
+      });
+      state.divisions = divisions;
+    },
   },
   state: {
     divisions: prepareData(divisions),
@@ -76,16 +127,10 @@ export default {
     divisions(state) {
       return state.divisions;
     },
-    validPosts(state) {
-      return state.posts.filter((p) => {
-        return p.title && p.body;
-      });
-    },
-    allPosts(state) {
-      return state.posts;
-    },
-    postsCount(state, getters) {
-      return getters.validPosts.length;
+    nestedDivisions(state) {
+      const combinations = [];
+      generateNested(state.divisions, combinations);
+      return combinations;
     },
   },
 };

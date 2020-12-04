@@ -15,19 +15,14 @@
           v-model="fact"
         />
         <select class="add-form__input" v-model="selected">
-          <option disabled value="">Выберите родителя</option>
-          <option v-bind:value="[]">Отсутствует</option>
-          <option
-            v-for="option in nestedDivisions"
-            v-bind:value="option.path"
-            v-bind:key="option.text"
-          >
-            {{ option.text }}
-          </option>
+          <option disabled value="">Выберите один из вариантов</option>
+          <option>А</option>
+          <option>Б</option>
+          <option>В</option>
         </select>
       </div>
       <button
-        :disabled="!name || !fact || !selected || fact <= 0"
+        :disabled="!name || !fact || fact <= 0"
         class="add-form__submit"
         type="submit"
       >
@@ -38,24 +33,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-
 export default {
-  computed: mapGetters(["nestedDivisions"]),
-  methods: {
-    ...mapMutations(["addDivision"]),
-    submit() {
-      this.addDivision({
-        name: this.name,
-        fact: parseInt(this.fact),
-        selected: this.selected,
-      });
-
-      this.name = "";
-      this.fact = "";
-      this.selected = "";
-    },
-  },
   data() {
     return {
       name: "",
@@ -89,7 +67,7 @@ export default {
   margin-bottom: 15px;
   padding: 5px 10px;
   outline: none;
-  font-size: 14px;
+  font-size: 23px;
 }
 
 .add-form__input:nth-last-of-type(1) {

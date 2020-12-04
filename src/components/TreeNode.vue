@@ -10,9 +10,9 @@
         v-bind:style="{
           paddingLeft: 20 + parseInt(depth) * 25 + 'px',
         }"
+        v-on:click="toggleExpandDivision(path)"
       >
         <i
-          v-on:click="toggleExpandDivision(path)"
           v-if="division.children && division.children.length > 0"
           class="fa fa-angle-right structure__icon structure__expander"
           v-bind:style="{
@@ -22,7 +22,7 @@
         {{ division.name }}
       </p>
       <p>{{ division.count }}</p>
-      <p>{{ path }}</p>
+      <p>{{ division.fact }}</p>
       <p>
         <i class="fa fa-pencil structure__icon"></i>
         <i
@@ -31,18 +31,20 @@
         ></i>
       </p>
     </div>
-    <div
-      v-if="division.children && division.children.length > 0"
-      v-show="division.expanded"
-    >
-      <TreeNode
-        v-bind:key="child.name"
-        v-for="(child, index) in division.children"
-        v-bind:division="child"
-        v-bind:depth="parseInt(depth) + 1"
-        v-bind:path="[...path, index]"
-      />
-    </div>
+    <transition name="fade">
+      <div
+        v-if="division.children && division.children.length > 0"
+        v-show="division.expanded"
+      >
+        <TreeNode
+          v-bind:key="child.name"
+          v-for="(child, index) in division.children"
+          v-bind:division="child"
+          v-bind:depth="parseInt(depth) + 1"
+          v-bind:path="[...path, index]"
+        />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -71,7 +73,7 @@ export default {
 
 <style scoped>
 .structure__icon {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .structure__icon:nth-child(2) {
@@ -84,5 +86,11 @@ export default {
 
 .structure__expander {
   margin-right: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .structure__row p:nth-child(1) {
+    padding-left: 20px !important;
+  }
 }
 </style>

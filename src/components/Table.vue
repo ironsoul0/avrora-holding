@@ -22,36 +22,6 @@ import TreeNode from "./TreeNode";
 
 export default {
   computed: mapGetters(["divisions"]),
-  data: () => ({
-    city: "Semey",
-    /* divisions: [ */
-    /*   { */
-    /*     name: "Almaty", */
-    /*     count: 30, */
-    /*     expanded: true, */
-    /*     children: [ */
-    /*       { */
-    /*         name: "Taldykorgan", */
-    /*         count: 45, */
-    /*         expanded: true, */
-    /*         children: [ */
-    /*           { */
-    /*             name: "Taldykorgan", */
-    /*             count: 45, */
-    /*             expanded: false, */
-    /*           }, */
-    /*         ], */
-    /*       }, */
-    /*       { */
-    /*         name: "Semey", */
-    /*         count: 45, */
-    /*         expanded: false, */
-    /*         children: [], */
-    /*       }, */
-    /*     ], */
-    /*   }, */
-    /* ], */
-  }),
   components: {
     TreeNode,
   },
@@ -84,6 +54,10 @@ export default {
 .structure__row p {
   margin: 0;
   padding: 15px 20px;
+}
+
+.structure__row:not(.structure__main-row) p:nth-child(1):hover {
+  cursor: pointer;
 }
 
 .structure__row p:nth-child(1) {

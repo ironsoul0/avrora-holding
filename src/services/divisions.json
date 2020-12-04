@@ -1,11 +1,11 @@
 [
   {
     "name": "Алматы",
-    "count": 100,
+    "count": 150,
     "children": [
       {
         "name": "Управление 1",
-        "count": 50,
+        "count": 55,
         "children": [
           {
             "name": "Отдел 1",
@@ -21,7 +21,7 @@
       },
       {
         "name": "Управление 2",
-        "count": 50,
+        "count": 60,
         "children": [
           {
             "name": "Отдел 1",
@@ -39,11 +39,11 @@
   },
   {
     "name": "Уральск",
-    "count": 100,
+    "count": 190,
     "children": [
       {
         "name": "Управление 1",
-        "count": 50,
+        "count": 70,
         "children": [
           {
             "name": "Отдел 1",
@@ -59,7 +59,7 @@
       },
       {
         "name": "Управление 2",
-        "count": 50,
+        "count": 80,
         "children": [
           {
             "name": "Отдел 1",
@@ -77,11 +77,11 @@
   },
   {
     "name": "Петропавловск",
-    "count": 100,
+    "count": 200,
     "children": [
       {
         "name": "Управление 1",
-        "count": 50,
+        "count": 90,
         "children": [
           {
             "name": "Отдел 1",
@@ -97,7 +97,7 @@
       },
       {
         "name": "Управление 2",
-        "count": 50,
+        "count": 60,
         "children": [
           {
             "name": "Отдел 1",
