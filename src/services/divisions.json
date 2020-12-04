@@ -1,0 +1,116 @@
+[
+  {
+    "name": "Алматы",
+    "count": 100,
+    "children": [
+      {
+        "name": "Управление 1",
+        "count": 50,
+        "children": [
+          {
+            "name": "Отдел 1",
+            "count": 25,
+            "children": []
+          },
+          {
+            "name": "Отдел 2",
+            "count": 25,
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Управление 2",
+        "count": 50,
+        "children": [
+          {
+            "name": "Отдел 1",
+            "count": 25,
+            "children": []
+          },
+          {
+            "name": "Отдел 2",
+            "count": 25,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Уральск",
+    "count": 100,
+    "children": [
+      {
+        "name": "Управление 1",
+        "count": 50,
+        "children": [
+          {
+            "name": "Отдел 1",
+            "count": 25,
+            "children": []
+          },
+          {
+            "name": "Отдел 2",
+            "count": 25,
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Управление 2",
+        "count": 50,
+        "children": [
+          {
+            "name": "Отдел 1",
+            "count": 25,
+            "children": []
+          },
+          {
+            "name": "Отдел 2",
+            "count": 25,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Петропавловск",
+    "count": 100,
+    "children": [
+      {
+        "name": "Управление 1",
+        "count": 50,
+        "children": [
+          {
+            "name": "Отдел 1",
+            "count": 25,
+            "children": []
+          },
+          {
+            "name": "Отдел 2",
+            "count": 25,
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "Управление 2",
+        "count": 50,
+        "children": [
+          {
+            "name": "Отдел 1",
+            "count": 25,
+            "children": []
+          },
+          {
+            "name": "Отдел 2",
+            "count": 25,
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]
