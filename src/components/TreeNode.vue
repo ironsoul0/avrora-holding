@@ -8,7 +8,10 @@
     >
       <p
         v-bind:style="{
-          paddingLeft: 20 + parseInt(depth) * 25 + 'px',
+          paddingLeft:
+            (division.children.length > 0 ? 20 : 50) +
+            parseInt(depth) * 25 +
+            'px',
         }"
         v-on:click="toggleExpandDivision(path)"
       >

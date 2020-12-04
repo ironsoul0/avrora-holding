@@ -28,6 +28,7 @@
                 <button
                   class="modal-body__button modal-default-button"
                   v-on:click="toggleOpen()"
+                  type="button"
                 >
                   Закрыть
                 </button>

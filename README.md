@@ -1,4 +1,4 @@
-# aurora-holding
+# avrora-holding
 
 ## Project setup
 ```

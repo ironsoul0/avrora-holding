@@ -58,26 +58,7 @@ const findTargetByPath = (oldDivisions, path) => {
 };
 
 export default {
-  actions: {
-    async fetchPosts({ commit, dispatch }, limit = 3) {
-      const res = await fetch(
-        "https://jsonplaceholder.typicode.com/posts?_limit=" + limit
-      );
-      const posts = await res.json();
-
-      dispatch("sayHello");
-
-      commit("updatePosts", posts);
-    },
-    sayHello() {},
-  },
   mutations: {
-    updatePosts(state, posts) {
-      state.posts = posts;
-    },
-    createPost(state, newPost) {
-      state.posts.unshift(newPost);
-    },
     deleteDivision(state, path) {
       const { target, divisions, last } = findTargetByPath(
         state.divisions,
